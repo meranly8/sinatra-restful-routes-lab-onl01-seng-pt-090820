@@ -6,8 +6,12 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
   
-  get 'recipes/new' do
+  get '/recipes/new' do
     erb :new
+  end
+  
+  post '/recipes' do
+    @recipe = Recipe.create(name: params[:name], ingredients: params[:name])
   end
     
   get '/recipes' do
